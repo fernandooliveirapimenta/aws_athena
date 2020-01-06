@@ -1,0 +1,25 @@
+Query SQL interativas no S3
+Utiliza Presto por baixo dos panos
+totalmente serverless
+
+suporta varios formatos:
+CSV (lido por humanos)
+JSON (lido por humanos)
+ORC (formato colunar , divisivel))
+Parquet (colunar , divisivel))
+Avro ( divisivel))
+
+Desestruturado,
+semi-estruturaado
+estruturado
+
+Exemplos
+SQL query de logs de um site
+Pesquisar dados antes de carregar no Redshift
+Analizar CloudTrais, CloudFront, VPC/ ELB logs
+Integracao com Jupyter, Zeppelin, RStudio notebooks
+Integracao com QuickSight
+Integracao via ODBC/JDBC com ferramentas de visualizacao
+
+
+

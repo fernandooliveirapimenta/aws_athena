@@ -1,0 +1,13 @@
+Controle de Acesso:
+IAM, ACLs, S3 politicas de bucket
+
+AmazonAthenaFullAccess/AWSQuicksigtAthenaAccess
+
+Criptografia dos resultados de s3 
+server  side com S3-magened key
+server side com SSE-KMS
+client side com CSE-KMS
+
+cross-account acesso com s3 bucket policy
+
+

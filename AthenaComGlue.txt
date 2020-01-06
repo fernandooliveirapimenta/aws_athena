@@ -1,0 +1,20 @@
+Athena + Glue
+
+S3 -> AWS Glue -> AWS Athena -> AWS QuickSight
+
+Athena Modelo de custo
+
+Pago pelo quanto usar
+
+5 dolares por Terabyte scaniado
+
+Pesquisa com Sucesso ou canceladas contam pesquisas com falha nao
+
+Nao aceita DDL
+(create, alter, drop
+
+Recomendado utilizar um formato colunar como:
+ORC, Parquet
+Salva dinheiro em 30 - 90% e tem melhor performance
+
+Glue e S3 tem suas proprias cobrancas

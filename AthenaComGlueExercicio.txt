@@ -1,0 +1,18 @@
+
+Data warehousing e visualizacao
+
+
+serverlogs -> Kinesis Data Firehose -> S3 -> Glue -> Athena (SERVERLESS)
+
+serverlogs -> Kinesis Data Firehose -> S3 -> Redshift -> QuickSight (Gerenciado)
+
+
+Glue:
+Add crawler:
+	crwaler info
+	data store
+	IAM role
+	Schedule ( on demanda)
+	Output ( Database )
+	
+

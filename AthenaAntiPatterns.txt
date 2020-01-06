@@ -1,0 +1,4 @@
+- Alta formatacao nos reports/visualizacao:
+	usar o QuickSight para isso
+- ETL
+	usar Glue para isso

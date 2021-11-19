@@ -1,0 +1,41 @@
+https://stackoverflow.com/questions/60620925/athena-sql-create-table-with-text-data
+
+You may be able to use a regex serde to parse your files. It depends on the shape of your data. You only provide a single line so this assumes that every line in your data files look the same.
+
+Here's the Athena documentation for the feature: https://docs.aws.amazon.com/athena/latest/ug/apache.html
+
+You should be able to do something like the following:
+
+CREATE EXTERNAL TABLE flights (
+  flight_number STRING,
+  `date` STRING,
+  pages_printed INT,
+  document_name STRING,
+  print_driver STRING
+)
+ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.RegexSerDe'
+WITH SERDEPROPERTIES (
+  "input.regex" = "^Flight Number:\\s+(\\S+)\\s+Date:\\s+(\\S+)\\s+Page\\[s\\] Printed:\\s+(\\S+)\\s+Document Name:\\s+(\\S+)\\s+Print Driver:\\s+(\\S+)\\s+\\(printer driver\\)$"
+ ) LOCATION 's3://example-bucket/some/prefix/'
+Each capture group in the regex will map to a column, in order.
+
+Since I don't have access to your data I can't test the regex, unfortunately, so there may be errors in it. Hopefully this example is enough to get you started.
+
+
+As LazySimpleSerDe is the default used by AWS Athena, you don't even need to declare it, see the create table statement for your data sample:
+
+CREATE EXTERNAL TABLE IF NOT EXISTS `mydb`.`mytable` (
+    `Flight Number` STRING,
+    `Date` STRING,
+    `Pages Printed` INT,
+    `Document Name` STRING,
+    `Print Driver` STRING)
+ROW FORMAT DELIMITED
+    FIELDS TERMINATED BY '\t'
+    ESCAPED BY '\\'
+    LINES TERMINATED BY '\n'
+LOCATION
+     's3://awsexamplebucket1-logs/AWSLogs/'
+You can use an online generator to help you in the future: https://www.hivetablegenerator.com/
+
+From the generator page: "Easily convert any JSON (even complex Nested ones), CSV, TSV, or Log sample file to an Apache HiveQL DDL create table statement."

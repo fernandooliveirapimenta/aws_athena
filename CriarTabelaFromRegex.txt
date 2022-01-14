@@ -39,3 +39,15 @@ LOCATION
 You can use an online generator to help you in the future: https://www.hivetablegenerator.com/
 
 From the generator page: "Easily convert any JSON (even complex Nested ones), CSV, TSV, or Log sample file to an Apache HiveQL DDL create table statement."
+
+
+
+https://docs.aws.amazon.com/athena/latest/ug/parsing-JSON.html
+-- json
+CREATE EXTERNAL TABLE json_table (
+  column_a string,
+  column_b int
+ )
+ ROW FORMAT SERDE 'org.openx.data.jsonserde.JsonSerDe'
+ WITH SERDEPROPERTIES ('ignore.malformed.json' = 'true')
+ LOCATION 's3://bucket/path/';
